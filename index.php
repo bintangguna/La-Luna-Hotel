@@ -29,9 +29,6 @@ elseif (isset($_GET['staff_mang'])) {
 elseif (isset($_GET['add_emp'])) {
     include_once "add_emp.php";
 } 
-elseif (isset($_GET['statistics'])) {
-    include_once "statistics.php";
-} 
 elseif (isset($_GET['emp_history'])) {
     include_once "emp_history.php";
 } 
