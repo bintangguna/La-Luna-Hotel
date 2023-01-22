@@ -1,0 +1,9 @@
+admin role bisa mengakses manajemen staff
+username: adminhotel
+password: admin123
+
+staff role tidak bisa mengakses menu staff
+username: staff
+password: staff123
+
+*customer/user saat registrasi hanya bisa mengakses menu reservasi saat login
