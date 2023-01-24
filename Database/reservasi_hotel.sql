@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2023 at 08:11 AM
+-- Generation Time: Jan 25, 2023 at 12:55 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -45,7 +45,9 @@ CREATE TABLE `booking` (
 
 INSERT INTO `booking` (`booking_id`, `customer_id`, `room_id`, `booking_date`, `check_in`, `check_out`, `total_price`, `remaining_price`, `payment_status`) VALUES
 (17, 17, 7, '2023-01-19 06:25:17', '19-01-2023', '22-01-2023', 22000000, 0, 1),
-(18, 18, 9, '2023-01-19 07:07:31', '19-01-2023', '20-01-2023', 23000000, 23000000, 0);
+(18, 18, 9, '2023-01-19 07:07:31', '19-01-2023', '20-01-2023', 23000000, 23000000, 0),
+(19, 19, 1, '2023-01-23 12:04:24', '23-01-2023', '26-01-2023', 10000000, 5000000, 0),
+(20, 20, 6, '2023-01-23 12:40:45', '23-01-2023', '24-01-2023', 5000000, 5000000, 0);
 
 -- --------------------------------------------------------
 
@@ -69,7 +71,9 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`customer_id`, `customer_name`, `contact_no`, `email`, `id_card_type_id`, `id_card_no`, `address`) VALUES
 (17, ' ', 0, '', 0, '', ''),
-(18, 'krisna arya', 81803442214, 'krisnaarya@gmail.com', 1, '5104013002398002', 'Jalan raya batubulan no 20x');
+(18, 'krisna arya', 81803442214, 'krisnaarya@gmail.com', 1, '5104013002398002', 'Jalan raya batubulan no 20x'),
+(19, 'andi ', 89897237133, 'andi123@gmail.com', 1, '51042354323411438', 'Jalan seminyak'),
+(20, 'ketut laser', 818903123431, 'ketut123@gmail.com', 1, '51934928419248984214', 'denpasar selantan');
 
 -- --------------------------------------------------------
 
@@ -112,12 +116,12 @@ CREATE TABLE `room` (
 --
 
 INSERT INTO `room` (`room_id`, `room_type_id`, `room_no`, `status`, `check_in_status`, `check_out_status`, `deleteStatus`) VALUES
-(1, 1, '101', NULL, 0, 1, 0),
+(1, 1, '101', 1, 1, 1, 0),
 (2, 1, '102', NULL, 0, 0, 0),
 (3, 1, '103', NULL, 0, 1, 0),
 (4, 1, '104', NULL, 0, 0, 0),
 (5, 1, '105', NULL, 0, 0, 0),
-(6, 1, '106', NULL, 0, 0, 0),
+(6, 1, '106', 1, 0, 0, 0),
 (7, 2, '201', NULL, 0, 1, 0),
 (8, 2, '202', NULL, 0, 0, 0),
 (9, 3, '301', 1, 0, 0, 0),
@@ -165,7 +169,8 @@ CREATE TABLE `shift` (
 
 INSERT INTO `shift` (`shift_id`, `shift`, `shift_timing`) VALUES
 (1, 'Morning', '08:00 AM - 06:00 PM'),
-(2, 'Night', '07:00 PM - 04:00 AM');
+(2, 'Night', '07:00 PM - 04:00 AM'),
+(3, 'Night', '08:00 PM - 11:00 PM');
 
 -- --------------------------------------------------------
 
@@ -194,9 +199,12 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`emp_id`, `emp_name`, `staff_type_id`, `shift_id`, `id_card_type`, `id_card_no`, `address`, `contact_no`, `salary`, `joining_date`, `updated_at`, `username`, `password`) VALUES
-(37, '2', 2, 1, 2147483647, 'test', '8987876567', 9223372036854775807, 0, '2023-01-16 07:30:24', '2023-01-16 07:35:49', 'adminhotel', '$2y$10$Ns.HeZtEMszyhtFGjTMvZ.fBDqOZ15I0WwYT6rRX7cBvYxmrUaWTG'),
-(40, '1', 1, 1, 2147483647, 'Denpasar', '089786789987', 0, 0, '2023-01-19 04:10:55', '2023-01-19 04:15:46', 'staff', '$2y$10$MiebJUdl2l0hUILf9ZxukutF67KmjcQjdncboDbxPNogA/ZY2cNzm'),
-(41, 'krisnaarya@gmail.com', 3, 0, 0, '', '', 0, 0, '2023-01-19 07:06:03', '2023-01-19 07:06:03', 'krisna', '$2y$10$VgdrydxzWYyOZ6Sd.tFk6OmAePqnT/5rzf7xQkHC51mXBMFfg2GLa');
+(37, 'Ketut Asmara', 2, 3, 1, '510401300902313', 'Kuta ', 81803556676, 3500000, '0000-00-00 00:00:00', '2023-01-22 01:50:01', 'adminhotel', '$2y$10$Ns.HeZtEMszyhtFGjTMvZ.fBDqOZ15I0WwYT6rRX7cBvYxmrUaWTG'),
+(40, 'Nyoman Lara', 1, 1, 1, '510401300902313', 'Gianyar', 81803567897, 2000000, '2021-03-12 01:34:32', '2021-03-08 01:33:25', 'staff', '$2y$10$MiebJUdl2l0hUILf9ZxukutF67KmjcQjdncboDbxPNogA/ZY2cNzm'),
+(41, 'krisnaarya@gmail.com', 3, 0, 0, '', '', 0, 0, '2023-01-19 07:06:03', '2023-01-19 07:06:03', 'krisna', '$2y$10$VgdrydxzWYyOZ6Sd.tFk6OmAePqnT/5rzf7xQkHC51mXBMFfg2GLa'),
+(42, 'gede@gmail.com', 3, 0, 0, '', '', 0, 0, '2023-01-19 11:31:46', '2023-01-19 11:31:46', 'gede123', '$2y$10$bDPkQh8I0nA05X5TSiE0yezu67KpAd7PJ46YwhO27FAdu3ytYvJhC'),
+(43, 'andi123@gmail.com', 3, 0, 0, '', '', 0, 0, '2023-01-23 12:03:39', '2023-01-23 12:03:39', 'andi', '$2y$10$c4uCvGJtX.UTamsyE7CAnOc3hHh8IXH/L6.m6HSO7pJibUVDYo8H.'),
+(44, 'ketut123@gmail.com', 3, 0, 0, '', '', 0, 0, '2023-01-23 12:40:01', '2023-01-23 12:40:01', 'ketut', '$2y$10$S.LljmHWHOXOnnU78GnjG.1YP3LwydlAV1nmGgXorzk7N7UgNKW0S');
 
 -- --------------------------------------------------------
 
@@ -313,13 +321,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `booking_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `id_card_type`
@@ -343,13 +351,13 @@ ALTER TABLE `room_type`
 -- AUTO_INCREMENT for table `shift`
 --
 ALTER TABLE `shift`
-  MODIFY `shift_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `shift_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `staff_type`
